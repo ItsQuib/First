@@ -1,10 +1,7 @@
-import glob
 import sqlite3
 from random import randint
 from time import sleep
-def clearScreen():
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-path = "H:\Year 12 (Again)\Game\Items\Random\*.txt"
+from utils import clearScreen
 itemid = 0
 with sqlite3.connect("items.db") as db:
     c = db.cursor()
@@ -24,36 +21,7 @@ with sqlite3.connect("items.db") as db:
     c.execute("""SELECT * FROM Items""")
     d = c.fetchall()
     for i in d:
-#        print(i)
         itemid += 1
-#        print(itemid)
-files = glob.glob(path)
-adjectives = []
-nouns = []
-for f in files:
-    with open(f, "r") as file:
-        line = file.readline().strip()
-        if(line == "---Adjectives---"):
-            for line in file:
-                adjectives.append(line.strip())
-        if(line == "---Nouns---"):
-            for line in file:
-                nouns.append(line.strip())
-
-def RandomItem():
-    item = ""
-    r1 = randint(0, (len(adjectives) - 1))
-    r2 = randint(0, (len(nouns) - 1))
-    if(adjectives[r1][0] in ["A", "E", "I", "O", "U"]):
-        item = item + "An "
-    else:
-        item = item + "A "
-    item = item + adjectives[r1] + " "
-    item = item + nouns[r2]
-    print(item)
-
-#for i in range(0, 100):
-#    RandomItem()
 
 def AddItem():
     global itemid
@@ -97,13 +65,12 @@ def ReadItems():
                     try:
                         activeitemchars.append(line)
                     except IndexError:
-        #                print("END OF ACTIVE FILE")
                         break
                 else:
                     break
     except FileNotFoundError:
-        with open("inv.txt", "w") as f:
-            rip = True
+        invFile = open("inv.txt", "w")
+        invFile.close()
     try:
         for i in activeitemchars:
             activeitems.append(items[0][int(i)])
@@ -145,22 +112,3 @@ def SaveItems(inv, equiped):
                 ids.append(i[a])
         else:
             ids.append(equiped[i])
-
-
-#ReadItems()
-#AddItem()
-#ReadItems()
-with sqlite3.connect("items.db") as db:
-    c = db.cursor()
-#    c.execute("""DELETE FROM Items WHERE ItemID = 8""")
-#    c.execute("""SELECT * FROM Items""")
-#    d = c.fetchall()
-#    print(d)
-
-#for i in ReadAllItems():
-#    print(i)
-
-
-
-#for i in range(0, 10):
-#    AddItem()
