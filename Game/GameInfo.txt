@@ -1,0 +1,37 @@
+Hello, this is a run through of what I want my game to be when it's finished. It will have multiple files handling different parts. The handling of files, handling of entities (Such as player or enemy classes) and everything else will have it's own file. This keeps the whole project cleaner and easier to manage. For the majority of the saved data, I am going to be using My SQL.
+
+The end project will be a finished text-based game with a working map, inventory and save-load system. It will be done 100% in Python and SQL.
+
+Files That Need Finishing or Updating:
+- File Handling
+- Inventory File Handling
+- Map
+- Inventory
+
+Files That Need Adding:
+- utils
+- classes
+
+File Handling:
+- Clean it up, remove unused/useless code.
+- Move 'Tutorial' function to a different file.
+- Change the way the file works, from reading/writing from txt files to SQL Database Files. Makes it a lot cleaner, easier to use and more organised.
+- Change variable names, needs to be more reader-friendly.
+- Add comments.
+
+InventoryFileHandling:
+- Remove a lot of unused blocks of code/functions.
+- Remove any reading/writing to txt files and use SQL instead.
+- Find an easy way to save and load inventories (Gonna Be Hard)
+- Change variable names, make more reader friendly.
+- Add comments.
+
+Map:
+- Clean up reading and writing. Find a more organised way of saving the map (Not SQL this time.)
+- Change variable names.
+- Add comments.
+
+Inventory:
+- Add a lottttt of comments (Looks very very very confusing at the moment.)
+- Add functions and classes to utils and classes file.
+- Change variable names to make it more organised and easier to read.
