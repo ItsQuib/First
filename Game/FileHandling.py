@@ -12,10 +12,6 @@ def ReadOptions():
             optl['ng'] = a.readline()[10:].strip()
             optl['cordx'] = int(a.readline()[16:].strip())
             optl['cordy'] = int(a.readline()[16:].strip())
-      #      print(opt1)
-      #      print(ng)
-      #      print(cordx)
-      #      print(cordy)
             if(optl['opt1'] == "0"):
                 with open("map.csv", "r", newline="") as f:
                     if(1 == 1):
@@ -94,8 +90,6 @@ def ReadPlayer():
             pll['playername'] = a.readline()[12:].strip()
             pll['playerhp'] = a.readline()[10:].strip()
             pll['playerlevel'] = a.readline()[14:].strip()
-     #      print(playerhp)
-     #      print(playerlevel)
             if(pll['player1'] == "1"):
                 user2 = player(pll['playername'], int(pll['playerhp']), 10, 10, int(pll['playerlevel']))
             if(pll['player1'] == "2"):
@@ -106,12 +100,10 @@ def ReadPlayer():
     except FileNotFoundError:
         pll, user2 = Tutorial()
         return pll, user2
+
 ################
 #Inventory File#
 ################
-#with open("inventory.csv", "r") as f:
-#    r = csv.reader(f)
-
 def updatePlayer(player, name, hp, xp):
     with open("player.txt", "w") as f:
         f.write("Player ID: " + str(player) + "\n")
