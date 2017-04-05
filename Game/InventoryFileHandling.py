@@ -49,14 +49,20 @@ def ReadAllItems():
         return d
 
 def ReadItems():
+    #List for storing the items fresh out of the file.
     items = []
+    #This stores the numbers that are in the file. The inv file stores the items
+    #in number form, based on the itemID in the SQL Database.
     activeitemchars = []
     activeitems = []
+    #Opening the items database. Here I am just getting all the data and putting 
+    #it in the items list.
     with sqlite3.connect("items.db") as db:
         c = db.cursor()
         c.execute("""SELECT * FROM Items""")
         d = c.fetchall()
         items.append(d)
+    #I am using this try except incase the file does not exist.
     try:
         with open("inv.txt", "r") as f:
             while True:
