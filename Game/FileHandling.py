@@ -84,6 +84,7 @@ def ReadOptions():
 #############
 #Player File#
 #############
+#This function reads a player from the file.
 def ReadPlayer():
     playerList = {}
     try:
