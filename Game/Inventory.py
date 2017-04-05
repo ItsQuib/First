@@ -1,57 +1,29 @@
 import InventoryFileHandling
 from time import sleep
+from Classes import itemClass
+from utils import clearScreen
 
-class itemClass(object):
-    def __init__(self, itemid, name, desc, itemtype, att, defe, at):
-        self.itemid = itemid
-        self.name = name
-        self.desc = desc
-        self.itemtype = itemtype
-        if(self.itemtype == "Armour"):
-            self.defence = defe
-            self.at = at
-        if(self.itemtype == "Weapon"):
-            self.att = att
-    def info(self):
-        print("Name: " + self.name)
-        print("Description: " + self.desc)
-        print("Type of item: " + self.itemtype)
-        if(self.itemtype == "Armour"):
-            print("Armour Type: " + self.at)
-            print("Defence: " + str(self.defence) + "\n")
-        elif(self.itemtype == "Weapon"):
-            print("Attack: " + str(self.att) + "\n")
-        else:
-            print("")
-    def retid(self):
-        return self.itemid
-    def rettype(self):
-        return self.itemtype
-    def retname(self):
-        return self.name
-    def retatt(self):
-        return self.att
-    def retat(self):
-        return self.at
-    def retdef(self):
-        return self.defence
-
-
-def clearScreen():
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-
+#itemBackpack is to store all the items that the user owns (Is in their inventory)
 itemBackpack = []
-
+#equipednums is for storing all the ---
 equipednums = []
-
+#activeBackpack is for storing all the items that the user has equiped.
 activeBackpack = {"Armour":{"Helmet":"None", "Chest":"None", "Legs":"None", "Shoes":"None"}, "Weapon":"None", "Charm":"None"}
 
-itemInventory, errorbool = InventoryFileHandling.ReadItems()
+#The two functions responsible for reading the items. They are stored in lists called "itemInventory" and "equipedItemInventory"
+itemInventory, errorBool = InventoryFileHandling.ReadItems()
 equipedItemInventory = InventoryFileHandling.ReadEquiped()
-if(errorbool == True):
+#If there is an error reading the items, the ReadItems function will return an empty list and a boolean value
+#of True which is stored in errorbool, this checks if the bool was True. If so, it will tell the user.
+if(errorBool == True):
     print("ERROR IN READING INVENTORY ITEMS")
+#Otherwise, it will make a class object for the item and append it to the itemBackpack.
+#Look at InventoryFileHandling to see how it reads the data and returns it.
 else:
     for i in itemInventory:
+        #The InventoryFileHandling file returns the data in a list. To visualise the list that's being returned,
+        #it would look something like this, but with one for every item in the player's inventory:
+        #[(ItemID, ItemName, ItemDesc, ItemType, Attack, Defence, ArmourType)]
         itemBackpack.append(itemClass(i[0], i[1], i[2], i[3], i[4], i[5], i[6]))
 try:
     with open("equiped.txt", "r") as f:
@@ -98,7 +70,7 @@ def SaveInventory():
     for i in itemBackpack:
         items.append(i.retid())
     with open("inv.txt", "w") as f:
-        for i in items:
+        for i in items: 
             f.write(str(i) + "\n")
     with open("equiped.txt", "w") as f:
         for i in ids:
