@@ -1,4 +1,5 @@
 from random import randint
+from Classes import enemy
 #This reads all the mobs, makes a class object for them and puts them in a dictionary
 #The dictionary is then returned.
 def ReadMobs():
