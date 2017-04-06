@@ -37,5 +37,5 @@ Map:
 
 Inventory:
 - Add a lottttt of comments (Looks very very very confusing at the moment.)
-- Add functions and classes to utils and classes file.
+## Add functions and classes to utils and classes file.
 - Change variable names to make it more organised and easier to read.
