@@ -26,6 +26,8 @@ else:
         #[(ItemID, ItemName, ItemDesc, ItemType, Attack, Defence, ArmourType)]
         itemBackpack.append(itemClass(i[0], i[1], i[2], i[3], i[4], i[5], i[6]))
 try:
+    #The equiped file holds the id numbers of items that are equiped by the player.
+    #This works in the same sense as the Inventory File Handling file reading items.
     with open("equiped.txt", "r") as f:
         while True:
             try:
@@ -37,8 +39,12 @@ try:
             except IndexError:
                 break
 except FileNotFoundError:
-    with open("equiped.txt", "w") as f:
-        rip = True
+    #Just creating an empty file.
+    f = open("equiped.txt", "w")
+    f.close()
+#This iterates through every number in the equiped file. And then through ever item that the player
+#has in their inventory. If the item's ID matches the number in the file (a.retid() == int(i)), then
+#it will add the item to the activeBackpack dictionary.
 for i in equipednums:
     for a in itemBackpack:
         if(a.retid() == int(i)):
@@ -59,6 +65,7 @@ tempBackpack = {}
 def SaveInventory():
     ids = []
     items = []
+    #
     for i in activeBackpack:
         if(i != "Armour"):
             if(activeBackpack[i] != "None"):
