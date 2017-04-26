@@ -1,6 +1,6 @@
 from random import randint
 from time import sleep
-from util import clearScreen
+from utils import clearScreen
 import sqlite3
 import csv
 
@@ -119,5 +119,3 @@ def updateMap(ml):
         writer = csv.writer(f)
         for row, i in zip(ml, range(0,len(ml))):
             writer.writerow(ml[i])
-
-m, opt = ReadOptions()
