@@ -1,5 +1,4 @@
-def clearScreen():
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+from utils import clearScreen
 from random import randint
 from time import sleep
 def battle(p, en):
