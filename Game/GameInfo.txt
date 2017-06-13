@@ -25,8 +25,7 @@ File Handling:
 
 InventoryFileHandling:
 ## Remove a lot of unused blocks of code/functions.
-- Remove any reading/writing to txt files and use SQL instead.
-- Find an easy way to save and load inventories (Gonna Be Hard)
+\- Find an easy way to save and load inventories (Gonna Be Hard)
 - Change variable names, make more reader friendly.
 - Add comments.
 
